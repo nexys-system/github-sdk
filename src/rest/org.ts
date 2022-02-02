@@ -5,6 +5,7 @@ import { host } from "./utils";
 
 /**
  * see https://docs.github.com/en/rest/reference/packages#list-packages-for-an-organization
+ * https://docs.github.com/en/rest/reference/packages#list-packages-for-an-organization--parameters
  * @param organization
  * @param packageType
  * @returns
@@ -14,7 +15,7 @@ export const getPackages = (
   packageType: T.PackageTypeEnum,
   token: string
 ) => {
-  const path = `/orgs/${organization}/packages?package_type=${packageType}`;
+  const path = `/orgs/${organization}/packages?package_type=${T.PackageTypeEnum[packageType]}`;
 
   return request(host + path, token, "GET");
 };
