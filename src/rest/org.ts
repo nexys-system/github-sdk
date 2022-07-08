@@ -33,7 +33,7 @@ const getContainerVersions = async (
   organization: string,
   repo: string,
   dockerName: string | null,
-  packageType: Type.PackageTypeEnum,
+  packageType: T.PackageTypeEnum,
   token: string
 ): Promise<any[]> => {
   const name = encodeURIComponent(
@@ -46,12 +46,12 @@ const getContainerVersions = async (
     organizationOrUser,
     organization,
     "packages",
-    Type.PackageTypeEnum[packageType],
+    T.PackageTypeEnum[packageType],
     name,
     "versions",
   ]
     .map((x) => "/" + x)
     .join("");
 
-  return request(host + path, token, "GET");
+  return request<T.ContainerVersion[]>(host + path, token, "GET");
 };
