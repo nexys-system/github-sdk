@@ -28,19 +28,30 @@ export const getPackages = (
  * @param token
  * @returns
  */
-export const getContainerVersions = async (
+const getContainerVersions = async (
+  organizationOrUser: "orgs" | "users",
   organization: string,
   repo: string,
   dockerName: string | null,
-  packageType: T.PackageTypeEnum,
+  packageType: Type.PackageTypeEnum,
   token: string
-) => {
+): Promise<any[]> => {
   const name = encodeURIComponent(
     dockerName === null || packageType === T.PackageTypeEnum.npm
       ? repo
       : repo + "/" + dockerName
   );
-  const path = `/orgs/${organization}/packages/${T.PackageTypeEnum[packageType]}/${name}/versions`;
 
-  return request<T.ContainerVersion[]>(host + path, token, "GET");
+  const path = [
+    organizationOrUser,
+    organization,
+    "packages",
+    Type.PackageTypeEnum[packageType],
+    name,
+    "versions",
+  ]
+    .map((x) => "/" + x)
+    .join("");
+
+  return request(host + path, token, "GET");
 };
