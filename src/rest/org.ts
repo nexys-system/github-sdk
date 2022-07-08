@@ -28,7 +28,7 @@ export const getPackages = (
  * @param token
  * @returns
  */
-const getContainerVersions = async (
+export const getContainerVersions = async (
   organizationOrUser: "orgs" | "users",
   organization: string,
   repo: string,
