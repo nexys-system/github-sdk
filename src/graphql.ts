@@ -69,7 +69,10 @@ class GithubQL {
     // array length should equal 1, because we filter by repo name
     if (packages.length > 0) {
       console.log(packages);
-      const fPackages = packages.filter((x) => x.packageType === "NPM");
+      const fPackages = packages
+        .filter((x) => x.packageType === "NPM")
+        // when a package is deleted it seems it is not fully deleted in the API, so filtering out with the following
+        .filter((x) => !x.name.includes("deleted"))
 
       const fLength = fPackages.length;
 
