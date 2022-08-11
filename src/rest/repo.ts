@@ -40,7 +40,7 @@ export const releasesList = async (
 ) => {
   const path = `/repos/${organization}/${repo}/releases`;
 
-  const r = await request<T.ContainerVersion[]>(host + path, token, "GET");
+  const r = await request<T.Release[]>(host + path, token, "GET");
 
   return r;
 };
