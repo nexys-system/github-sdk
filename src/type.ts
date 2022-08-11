@@ -74,3 +74,15 @@ export interface ContainerVersion {
   html_url: string;
   metadata: { package_type: PackageType; container?: { tags: string[] } };
 }
+
+export interface Release {
+  url: string;
+  id: number;
+  author: { login: string; id: number; type: string };
+  tag_name: string;
+  target_commitish: string;
+  name: string;
+  created_at: string;
+  published_at: string;
+  draft: boolean;
+}
