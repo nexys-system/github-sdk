@@ -29,6 +29,21 @@ export const cloneFromTemplate = (
     description: repository.description,
   });
 };
+    
+/**
+ * https://docs.github.com/en/rest/releases/releases#list-releases
+ */
+export const releasesList = async (
+  organization: string,
+  repo: string,
+  token: string,
+) => {
+  const path = `/repos/${organization}/${repo}/releases`;
+
+  const r = await request<T.ContainerVersion[]>(host + path, token, "GET");
+
+  return r;
+};
 
 export const releaseCreate = async (
   organization: string,
