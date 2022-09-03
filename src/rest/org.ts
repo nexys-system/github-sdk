@@ -3,6 +3,8 @@ import { request } from "../config";
 
 import { host } from "./utils";
 
+// the url for the list of containers for a user is slightly different: 
+// https://docs.github.com/en/rest/packages#list-packages-for-the-authenticated-users-namespace
 const getUrlForPackageList = (organization?:string):string => {
   if (organization) {
     return `/orgs/${organization}/packages`
