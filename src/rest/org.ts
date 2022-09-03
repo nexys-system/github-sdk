@@ -3,6 +3,14 @@ import { request } from "../config";
 
 import { host } from "./utils";
 
+const getUrlForPackageList = (organization?:string):string => {
+  if (organization) {
+    return `/orgs/${organization}/packages`
+  }
+  
+  return '/user/packages'
+}
+
 /**
  * see https://docs.github.com/en/rest/reference/packages#list-packages-for-an-organization
  * https://docs.github.com/en/rest/reference/packages#list-packages-for-an-organization--parameters
@@ -11,11 +19,11 @@ import { host } from "./utils";
  * @returns
  */
 export const getPackages = (
-  organization: string,
   packageType: T.PackageTypeEnum,
-  token: string
+  token: string,
+  organization?: string
 ) => {
-  const path = `/orgs/${organization}/packages?package_type=${T.PackageTypeEnum[packageType]}`;
+  const path = getUrlForPackageList(organization) + `?package_type=${T.PackageTypeEnum[packageType]}`;
 
   return request(host + path, token, "GET");
 };
