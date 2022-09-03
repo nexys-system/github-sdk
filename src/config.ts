@@ -1,5 +1,3 @@
-import fetch from "node-fetch";
-
 export const request = async <A>(
   url: string,
   token: string,

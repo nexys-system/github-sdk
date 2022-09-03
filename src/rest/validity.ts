@@ -1,5 +1,3 @@
-import fetch, { Headers } from "node-fetch";
-
 const getScopes = (headers: Headers): string[] => {
   const oauthScopesRaw = headers.get("X-OAuth-Scopes");
 
@@ -22,7 +20,10 @@ const getExpirationDate = (headers: Headers): Date | null => {
   return new Date(expirationDateRaw);
 };
 
-export const getTokenScopeAndValidity = async (token: string, expectedScopes:string[] = ["read:packages", "repo"]) => {
+export const getTokenScopeAndValidity = async (
+  token: string,
+  expectedScopes: string[] = ["read:packages", "repo"]
+) => {
   const url = "https://api.github.com";
 
   const response = await fetch(url, {
