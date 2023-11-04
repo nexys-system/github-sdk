@@ -173,7 +173,7 @@ class GitHubWorkflowAPI {
     };
   }
 
-  async request({ path, method = "GET", data }:{path:string, method: 'GET' | 'POST', data?:any}) {
+  async request({ path, method = "GET", data }:{path: string, method?: 'GET' | 'POST', data?:any}) {
     const url = this.host + path;
     const body = data && JSON.stringify(data);
 
@@ -192,7 +192,7 @@ class GitHubWorkflowAPI {
     return response.json();
   }
 
-  async triggerWorkflow(owner, repo, workflow_id, branch_name, inputs) {
+  async triggerWorkflow(owner:string, repo:string, workflow_id:number, branch_name:string, inputs?:any) {
     const path = `/repos/${owner}/${repo}/actions/workflows/${workflow_id}/dispatches`;
     const data = {
       ref: branch_name,
@@ -203,7 +203,7 @@ class GitHubWorkflowAPI {
     return response.status === 204;
   }
 
-  async workflowStatus(owner, repo):Promise<{total_count:number, workflow_runs:GithubWorkflowRun[]}> {
+  async workflowStatus(owner:string, repo:string):Promise<{total_count:number, workflow_runs:GithubWorkflowRun[]}> {
     const path = `/repos/${owner}/${repo}/actions/runs`;
     const response = await this.request({ path });
     return response.json();
