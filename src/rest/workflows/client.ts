@@ -161,6 +161,9 @@ interface RepositoryOwner {
 
 
 class GitHubWorkflowAPI {
+  host: string;
+  headers: {[k:string]: string};
+  
   constructor(token: string) {
     this.host = "https://api.github.com";
     this.headers = {
