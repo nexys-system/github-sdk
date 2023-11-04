@@ -4,7 +4,6 @@
 [![Build and Test Package](https://github.com/nexys-system/github-sdk/actions/workflows/test.yml/badge.svg)](https://github.com/nexys-system/github-sdk/actions/workflows/test.yml)
 [![Publish](https://github.com/nexys-system/github-sdk/actions/workflows/publish.yml/badge.svg)](https://github.com/nexys-system/github-sdk/actions/workflows/publish.yml)
 ![Code style](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)
-[![Bundlephobia](https://badgen.net/bundlephobia/min/@nexys/github-sdk)](https://bundlephobia.com/result?p=@nexys/github-sdk)
 
 ## Get started
 
